@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { BookContext } from '../contexts/BookContext';
+import { BiSolidBookAdd } from 'react-icons/bi';
 
 const NewBookForm = () => {
   const { dispatch } = useContext(BookContext);
@@ -14,7 +15,7 @@ const NewBookForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <input
         type="text"
         placeholder="Book Title"
@@ -29,7 +30,7 @@ const NewBookForm = () => {
         onChange={(e) => setAuthor(e.target.value)}
         required
       />
-      <input type="submit" value="Add Book" />
+      <BiSolidBookAdd className="add-button" onClick={handleSubmit} />
     </form>
   );
 };

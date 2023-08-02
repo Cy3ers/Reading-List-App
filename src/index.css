@@ -67,7 +67,10 @@ input[type='text'] {
   color: #fff;
   border: 0;
 }
-input[type='submit'] {
+
+.add-button {
+  color: black;
+  cursor: pointer;
   margin: 10px auto;
   background: #eee;
   opacity: 85%;
@@ -77,8 +80,7 @@ input[type='submit'] {
   display: block;
 }
 
-input[type='submit']:hover {
-  transform: scale(1.05);
-  cursor: pointer;
+.add-button:hover {
+  transform: scale(1.005);
   opacity: 100%;
 }
