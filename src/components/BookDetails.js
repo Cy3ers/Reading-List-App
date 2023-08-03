@@ -9,6 +9,6 @@ const BookDetails = ({ book }) => {
       <div className="author">{book.author}</div>
     </li>
   );
-}
+};
 
 export default BookDetails;

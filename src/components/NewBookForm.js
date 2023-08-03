@@ -6,12 +6,25 @@ const NewBookForm = () => {
   const { dispatch } = useContext(BookContext);
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  const handleInputChange = (e) => {
+    const newTitle = e.target.name === 'title' ? e.target.value : title;
+    const newAuthor = e.target.name === 'author' ? e.target.value : author;
+    setTitle(newTitle);
+    setAuthor(newAuthor);
+    setIsDisabled(newTitle.trim() === '' || newAuthor.trim() === '');
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (title.trim() === '' || author.trim() === '') {
+      return;
+    }
     dispatch({ type: 'ADD_BOOK', book: { title, author } });
     setTitle('');
     setAuthor('');
+    setIsDisabled(true);
   };
 
   return (
@@ -19,18 +32,24 @@ const NewBookForm = () => {
       <input
         type="text"
         placeholder="Book Title"
+        name="title"
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={handleInputChange}
         required
       />
       <input
         type="text"
         placeholder="Author Name"
+        name="author"
         value={author}
-        onChange={(e) => setAuthor(e.target.value)}
+        onChange={handleInputChange}
         required
       />
-      <BiSolidBookAdd className="add-button" onClick={handleSubmit} />
+      <BiSolidBookAdd
+        className={`add-button${isDisabled ? ' disabled' : ''}`}
+        onClick={handleSubmit}
+        disabled={isDisabled}
+      />
     </form>
   );
 };

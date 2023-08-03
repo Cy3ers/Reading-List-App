@@ -16,6 +16,6 @@ const BookContextProvider = (props) => {
       {props.children}
     </BookContext.Provider>
   );
-}
- 
+};
+
 export default BookContextProvider;
